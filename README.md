@@ -1,5 +1,8 @@
 # BitNet CPU Docker
 
+[![Docker Publish](https://github.com/prachwal/BitNet_app/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/prachwal/BitNet_app/actions/workflows/docker-publish.yml)
+[![GHCR](https://img.shields.io/badge/GHCR-ghcr.io%2Fprachwal%2FBitNet__app-blue)](https://github.com/prachwal/BitNet_app/pkgs/container/BitNet_app)
+
 Kontener CPU-only dla `microsoft/BitNet` z gotowym API HTTP i orkiestracją przez Docker Compose.
 
 Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
@@ -104,4 +107,4 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 
 - Pierwsze uruchomienie trwa dłużej, bo kontener pobiera model z Hugging Face.
 - Model jest przechowywany w wolumenie Dockera `bitnet-models`.
-- Projekt nie zawiera licencji. Przed publikacją publiczną dodaj plik licencyjny zgodny z Twoją decyzją prawną.
+- Repo zawiera licencję MIT w pliku [LICENSE](/home/prachwal/src/python/BitNet_app/LICENSE).
