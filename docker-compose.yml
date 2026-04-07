@@ -1,0 +1,34 @@
+services:
+  bitnet:
+    build:
+      context: .
+    image: "${BITNET_IMAGE_NAME:-bitnet-cpu:latest}"
+    container_name: "${BITNET_CONTAINER_NAME:-bitnet-cpu}"
+    ports:
+      - "${BITNET_PORT:-8080}:8080"
+      - "${BITNET_HEALTH_PORT:-8081}:8081"
+    environment:
+      BITNET_MODE: "${BITNET_MODE:-server}"
+      BITNET_MODEL_REPO: "${BITNET_MODEL_REPO:-microsoft/bitnet-b1.58-2B-4T-gguf}"
+      BITNET_MODEL_DIR: /models/bitnet
+      BITNET_PROMPT: "${BITNET_PROMPT:-You are a helpful assistant.}"
+      BITNET_CTX_SIZE: "${BITNET_CTX_SIZE:-2048}"
+      BITNET_THREADS: "${BITNET_THREADS:-4}"
+      BITNET_N_PREDICT: "${BITNET_N_PREDICT:-512}"
+      BITNET_TEMPERATURE: "${BITNET_TEMPERATURE:-0.8}"
+      BITNET_HOST: 0.0.0.0
+      BITNET_PORT: "8080"
+      BITNET_HEALTH_PORT: "8081"
+      BITNET_QUANT_TYPE: "${BITNET_QUANT_TYPE:-i2_s}"
+    volumes:
+      - bitnet-models:/models
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8081/ready"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  bitnet-models:
