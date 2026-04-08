@@ -12,6 +12,22 @@ Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruch
 To repo jest forkowym wariantem opartym o [microsoft/BitNet](https://github.com/microsoft/BitNet).
 Zawiera własne poprawki dla kontenera Docker, readiness, dokumentacji i publikacji obrazu.
 
+## Sync
+
+Jeśli chcesz zaciągnąć zmiany z oryginalnego repo, użyj:
+
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+Jeśli wolisz zachować własną historię i wprowadzać upstream stopniowo, możesz zamiast tego użyć:
+
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+
 ## Funkcje
 
 - CPU-only runtime
