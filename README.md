@@ -7,6 +7,11 @@ Kontener CPU-only dla `microsoft/BitNet` z gotowym API HTTP i orkiestracją prze
 
 Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
 
+## Upstream
+
+To repo jest forkowym wariantem opartym o [microsoft/BitNet](https://github.com/microsoft/BitNet).
+Zawiera własne poprawki dla kontenera Docker, readiness, dokumentacji i publikacji obrazu.
+
 ## Funkcje
 
 - CPU-only runtime

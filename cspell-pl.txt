@@ -166,3 +166,9 @@ wysłanie
 wypchnięciu
 uprawnienie
 włączeniu
+forkowym
+wariantem
+opartym
+własne
+poprawki
+dokumentacji
