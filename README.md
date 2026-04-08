@@ -3,67 +3,66 @@
 [![Docker Publish](https://github.com/prachwal/BitNet_app/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/prachwal/BitNet_app/actions/workflows/docker-publish.yml)
 [![GHCR](https://img.shields.io/badge/GHCR-ghcr.io%2Fprachwal%2FBitNet__app-blue)](https://github.com/prachwal/BitNet_app/pkgs/container/BitNet_app)
 
-Kontener CPU-only dla `microsoft/BitNet` z gotowym API HTTP i orkiestracją przez Docker Compose.
+CPU-only container for `microsoft/BitNet` with an HTTP API and Docker Compose orchestration.
 
-Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
+The project builds a BitNet image, downloads the official GGUF model from Hugging Face, and runs a server compatible with the `llama.cpp` API.
 
 ## Upstream
 
-To repo jest forkowym wariantem opartym o [microsoft/BitNet](https://github.com/microsoft/BitNet).
-Zawiera własne poprawki dla kontenera Docker, readiness, dokumentacji i publikacji obrazu.
+This repository is a fork of [microsoft/BitNet](https://github.com/microsoft/BitNet) with custom fixes for Docker, runtime behavior, and image publishing.
 
 ## Sync
 
-Jeśli chcesz zaciągnąć zmiany z oryginalnego repo, użyj:
+To pull changes from the original repository, use:
 
 ```bash
 git fetch upstream
 git merge upstream/main
 ```
 
-Jeśli wolisz zachować własną historię i wprowadzać upstream stopniowo, możesz zamiast tego użyć:
+If you prefer to keep your own history and apply upstream changes incrementally, use:
 
 ```bash
 git fetch upstream
 git rebase upstream/main
 ```
 
-## Funkcje
+## Features
 
 - CPU-only runtime
-- automatyczne pobieranie modelu `microsoft/bitnet-b1.58-2B-4T-gguf`
-- endpointy `health` i `ready`
-- gotowy `docker-compose.yml`
-- workflow GitHub Actions do publikacji obrazu do GHCR
+- automatic download of `microsoft/bitnet-b1.58-2B-4T-gguf`
+- `health` and `ready` endpoints
+- ready-to-use `docker-compose.yml`
+- GitHub Actions workflow for publishing the image to GHCR
 
-## Wymagania
+## Requirements
 
 - Docker 24+
 - Docker Compose v2
-- dostęp do internetu podczas pierwszego uruchomienia kontenera
+- internet access during the first container startup
 
-## Szybki start
+## Quick Start
 
-1. Skopiuj plik środowiskowy:
+1. Copy the environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-1. Zbuduj i uruchom usługę:
+1. Build and start the service:
 
 ```bash
 docker compose up -d --build
 ```
 
-1. Sprawdź gotowość:
+1. Check readiness:
 
 ```bash
 curl -sS http://127.0.0.1:8081/health
 curl -sS http://127.0.0.1:8081/ready
 ```
 
-1. Wyślij testowy prompt:
+1. Send a test prompt:
 
 ```bash
 curl -sS http://127.0.0.1:8080/v1/chat/completions \
@@ -78,22 +77,22 @@ curl -sS http://127.0.0.1:8080/v1/chat/completions \
   }'
 ```
 
-## Endpointy
+## Endpoints
 
 - `GET /health`
-  Zwraca bieżący stan startu kontenera.
+  Returns the current startup state of the container.
 - `GET /ready`
-  Zwraca `200` dopiero wtedy, gdy serwer modelu przyjmuje połączenia.
+  Returns `200` only when the model server is accepting connections.
 - `GET /v1/models`
-  Lista modeli wystawionych przez `llama-server`.
+  Lists models exposed by `llama-server`.
 - `POST /v1/chat/completions`
-  Endpoint zgodny z chat completions.
+  Chat completions-compatible endpoint.
 
-## Konfiguracja
+## Configuration
 
-Wartości konfiguracyjne są czytane z `.env` i przekazywane do Compose.
+Configuration values are read from `.env` and passed to Compose.
 
-Najważniejsze zmienne:
+Important variables:
 
 - `BITNET_IMAGE_NAME`
 - `BITNET_CONTAINER_NAME`
@@ -106,29 +105,30 @@ Najważniejsze zmienne:
 - `BITNET_TEMPERATURE`
 - `BITNET_QUANT_TYPE`
 
-## Publikacja obrazu
+## Image Publishing
 
-Workflow GitHub Actions publikuje obraz do GitHub Container Registry:
+The GitHub Actions workflow publishes the image to GitHub Container Registry:
 
-- repozytorium obrazu: `ghcr.io/<owner>/<repo>`
-- publikacja na `main`
-- publikacja przy tagach `v*`
+- image namespace: `ghcr.io/<owner>/<repo>`
+- publish on `main`
+- publish on `v*` tags
 
-Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawnienie do pakietów.
+After pushing the repository to GitHub, enable Actions and grant the repository permission to publish packages.
 
-## Pliki projektu
+## Project Files
 
-- [Dockerfile](/home/prachwal/src/python/BitNet_app/Dockerfile)
-- [docker-entrypoint.sh](/home/prachwal/src/python/BitNet_app/docker-entrypoint.sh)
-- [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
-- [.env.example](/home/prachwal/src/python/BitNet_app/.env.example)
-- [.github/workflows/docker-publish.yml](/home/prachwal/src/python/BitNet_app/.github/workflows/docker-publish.yml)
-- [CHANGELOG.md](/home/prachwal/src/python/BitNet_app/CHANGELOG.md)
+- [Dockerfile](./Dockerfile)
+- [docker-entrypoint.sh](./docker-entrypoint.sh)
+- [docker-compose.yml](./docker-compose.yml)
+- [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [.env.example](./.env.example)
+- [.github/workflows/docker-publish.yml](./.github/workflows/docker-publish.yml)
+- [CHANGELOG.md](./CHANGELOG.md)
 
-## Uwagi
+## Notes
 
-- Pierwsze uruchomienie trwa dłużej, bo kontener pobiera model z Hugging Face.
-- Model jest przechowywany w wolumenie Dockera `bitnet-models`.
-- Repo zawiera licencję MIT w pliku [LICENSE](/home/prachwal/src/python/BitNet_app/LICENSE).
-- Domyślny limit RAM kontenera to `16g`.
-- Domyślne `BITNET_THREADS=6` pasuje do fizycznych rdzeni i5-10400F; jeśli chcesz, możesz to zmienić w `.env`.
+- The first run takes longer because the container downloads the model from Hugging Face.
+- The model is stored in the Docker volume `bitnet-models`.
+- The repository includes the MIT license in [LICENSE](./LICENSE).
+- The default RAM limit for the container is `16g`.
+- The default `BITNET_THREADS=6` fits the physical cores of an i5-10400F; adjust it in `.env` if needed.
