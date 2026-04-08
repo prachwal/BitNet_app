@@ -29,7 +29,7 @@ RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 180 && 
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 180
 
 WORKDIR /opt
-COPY bitnet-src /opt/BitNet
+RUN git clone --recursive https://github.com/microsoft/BitNet.git
 WORKDIR /opt/BitNet
 
 RUN perl -0pi -e 's/@Model\.register\("BitnetForCausalLM"\)/@Model.register("BitnetForCausalLM", "BitNetForCausalLM")/' utils/convert-hf-to-gguf-bitnet.py

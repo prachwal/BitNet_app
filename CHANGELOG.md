@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-- Vendored the upstream `microsoft/BitNet` source tree into `bitnet-src/` and vendored its `llama.cpp` submodule.
-- Switched the Docker build to use the local source tree instead of cloning upstream during image build.
-- Added upstream tracking for `microsoft/BitNet` and documented the fork relationship.
+- Restored the Docker build to clone `microsoft/BitNet` during image build.
+- Removed the vendored `bitnet-src/` source tree and the upstream import helper.
+- Kept the fork documentation focused on merge/rebase from the upstream remote.
 - Dodano kontener CPU-only dla `microsoft/BitNet` z serwerem HTTP zgodnym z `llama.cpp`.
 - Dodano `docker-compose.yml`, health/readiness endpointy i workflow publikacji obrazu do GHCR.
 - Ustalono domyślny limit RAM kontenera na `16g` oraz `BITNET_THREADS=6`.

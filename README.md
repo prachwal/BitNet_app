@@ -5,26 +5,26 @@
 
 Kontener CPU-only dla `microsoft/BitNet` z gotowym API HTTP i orkiestracją przez Docker Compose.
 
-Repo zawiera checked-in kopię upstream `microsoft/BitNet` w katalogu `bitnet-src/`.
-Projekt buduje obraz BitNet z lokalnego źródła, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
+Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
 
 ## Upstream
 
-To repo jest forkowym wariantem opartym o [microsoft/BitNet](https://github.com/microsoft/BitNet).
-Zawiera własne poprawki dla kontenera Docker, readiness, dokumentacji i publikacji obrazu.
+To repo jest forkiem [microsoft/BitNet](https://github.com/microsoft/BitNet) z własnymi poprawkami dla Dockera, runtime i publikacji obrazu.
 
 ## Sync
 
-Jeśli chcesz odświeżyć lokalną kopię upstream w `bitnet-src/`, użyj:
+Jeśli chcesz zaciągnąć zmiany z oryginalnego repo, użyj:
 
 ```bash
-bash scripts/sync-upstream.sh
+git fetch upstream
+git merge upstream/main
 ```
 
-Jeśli chcesz wskazać inne źródło lub katalog docelowy, ustaw:
+Jeśli wolisz zachować własną historię i wprowadzać upstream stopniowo, możesz zamiast tego użyć:
 
 ```bash
-UPSTREAM_REF=upstream/main TARGET_DIR=bitnet-src bash scripts/sync-upstream.sh
+git fetch upstream
+git rebase upstream/main
 ```
 
 ## Funkcje
@@ -118,10 +118,8 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 ## Pliki projektu
 
 - [Dockerfile](/home/prachwal/src/python/BitNet_app/Dockerfile)
-- [bitnet-src/](/home/prachwal/src/python/BitNet_app/bitnet-src)
 - [docker-entrypoint.sh](/home/prachwal/src/python/BitNet_app/docker-entrypoint.sh)
 - [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
-- [scripts/sync-upstream.sh](/home/prachwal/src/python/BitNet_app/scripts/sync-upstream.sh)
 - [CONTRIBUTING.md](/home/prachwal/src/python/BitNet_app/CONTRIBUTING.md)
 - [.env.example](/home/prachwal/src/python/BitNet_app/.env.example)
 - [.github/workflows/docker-publish.yml](/home/prachwal/src/python/BitNet_app/.github/workflows/docker-publish.yml)

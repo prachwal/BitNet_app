@@ -5,8 +5,8 @@ This repository is a fork of `microsoft/BitNet` with additional Docker, runtime,
 ## Branching
 
 - Keep local changes on a feature branch.
-- Re-import `upstream/main` into `bitnet-src/` before opening a PR or pushing a release branch.
-- Use `scripts/sync-upstream.sh` to sync the vendored upstream tree when the working tree is clean.
+- Keep a local `upstream` remote pointing at `microsoft/BitNet`.
+- Use `git fetch upstream` followed by `git merge upstream/main` or `git rebase upstream/main` before opening a PR or pushing a release branch.
 
 ## Change Scope
 
