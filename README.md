@@ -128,6 +128,7 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 - [docker-entrypoint.sh](/home/prachwal/src/python/BitNet_app/docker-entrypoint.sh)
 - [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
 - [scripts/sync-upstream.sh](/home/prachwal/src/python/BitNet_app/scripts/sync-upstream.sh)
+- [CONTRIBUTING.md](/home/prachwal/src/python/BitNet_app/CONTRIBUTING.md)
 - [.env.example](/home/prachwal/src/python/BitNet_app/.env.example)
 - [.github/workflows/docker-publish.yml](/home/prachwal/src/python/BitNet_app/.github/workflows/docker-publish.yml)
 - [CHANGELOG.md](/home/prachwal/src/python/BitNet_app/CHANGELOG.md)
