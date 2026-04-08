@@ -115,6 +115,20 @@ The GitHub Actions workflow publishes the image to GitHub Container Registry:
 
 After pushing the repository to GitHub, enable Actions and grant the repository permission to publish packages.
 
+## Pulling the Image
+
+To download the published container image:
+
+```bash
+docker pull ghcr.io/prachwal/bitnet_app:latest
+```
+
+To start it after pulling:
+
+```bash
+docker run --rm -p 8080:8080 -p 8081:8081 ghcr.io/prachwal/bitnet_app:latest
+```
+
 ## Project Files
 
 - [Dockerfile](./Dockerfile)
