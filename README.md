@@ -5,7 +5,8 @@
 
 Kontener CPU-only dla `microsoft/BitNet` z gotowym API HTTP i orkiestracją przez Docker Compose.
 
-Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
+Repo zawiera checked-in kopię upstream `microsoft/BitNet` w katalogu `bitnet-src/`.
+Projekt buduje obraz BitNet z lokalnego źródła, pobiera oficjalny model GGUF z Hugging Face i uruchamia serwer zgodny z API `llama.cpp`.
 
 ## Upstream
 
@@ -14,24 +15,16 @@ Zawiera własne poprawki dla kontenera Docker, readiness, dokumentacji i publika
 
 ## Sync
 
-Jeśli chcesz zaciągnąć zmiany z oryginalnego repo, użyj:
-
-```bash
-git fetch upstream
-git merge upstream/main
-```
-
-Jeśli wolisz zachować własną historię i wprowadzać upstream stopniowo, możesz zamiast tego użyć:
-
-```bash
-git fetch upstream
-git rebase upstream/main
-```
-
-Możesz też użyć helpera:
+Jeśli chcesz odświeżyć lokalną kopię upstream w `bitnet-src/`, użyj:
 
 ```bash
 bash scripts/sync-upstream.sh
+```
+
+Jeśli chcesz wskazać inne źródło lub katalog docelowy, ustaw:
+
+```bash
+UPSTREAM_REF=upstream/main TARGET_DIR=bitnet-src bash scripts/sync-upstream.sh
 ```
 
 ## Funkcje
@@ -125,6 +118,7 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 ## Pliki projektu
 
 - [Dockerfile](/home/prachwal/src/python/BitNet_app/Dockerfile)
+- [bitnet-src/](/home/prachwal/src/python/BitNet_app/bitnet-src)
 - [docker-entrypoint.sh](/home/prachwal/src/python/BitNet_app/docker-entrypoint.sh)
 - [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
 - [scripts/sync-upstream.sh](/home/prachwal/src/python/BitNet_app/scripts/sync-upstream.sh)
