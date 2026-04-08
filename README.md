@@ -29,20 +29,20 @@ Projekt buduje obraz BitNet, pobiera oficjalny model GGUF z Hugging Face i uruch
 cp .env.example .env
 ```
 
-2. Zbuduj i uruchom usługę:
+1. Zbuduj i uruchom usługę:
 
 ```bash
 docker compose up -d --build
 ```
 
-3. Sprawdź gotowość:
+1. Sprawdź gotowość:
 
 ```bash
 curl -sS http://127.0.0.1:8081/health
 curl -sS http://127.0.0.1:8081/ready
 ```
 
-4. Wyślij testowy prompt:
+1. Wyślij testowy prompt:
 
 ```bash
 curl -sS http://127.0.0.1:8080/v1/chat/completions \
@@ -102,9 +102,12 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 - [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
 - [.env.example](/home/prachwal/src/python/BitNet_app/.env.example)
 - [.github/workflows/docker-publish.yml](/home/prachwal/src/python/BitNet_app/.github/workflows/docker-publish.yml)
+- [CHANGELOG.md](/home/prachwal/src/python/BitNet_app/CHANGELOG.md)
 
 ## Uwagi
 
 - Pierwsze uruchomienie trwa dłużej, bo kontener pobiera model z Hugging Face.
 - Model jest przechowywany w wolumenie Dockera `bitnet-models`.
 - Repo zawiera licencję MIT w pliku [LICENSE](/home/prachwal/src/python/BitNet_app/LICENSE).
+- Domyślny limit RAM kontenera to `16g`.
+- Domyślne `BITNET_THREADS=6` pasuje do fizycznych rdzeni i5-10400F; jeśli chcesz, możesz to zmienić w `.env`.

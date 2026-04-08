@@ -1,0 +1,59 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_US", "softwareTerms", "polish"],
+  "dictionaryDefinitions": [
+    {
+      "name": "polish",
+      "path": "./cspell-pl.txt"
+    }
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "build/**",
+    "dist/**",
+    "models/**",
+    ".git/**"
+  ],
+  "words": [
+    "BitNet",
+    "GHCR",
+    "llama",
+    "llama-server",
+    "Dockerfile",
+    "docker-compose",
+    "README",
+    "OpenAI",
+    "VSCode",
+    "cspell",
+    "Docker",
+    "GitHub",
+    "GGUF",
+    "gguf",
+    "ggml",
+    "huggingface",
+    "pathlib",
+    "wfile",
+    "argparse",
+    "embd",
+    "pretuned"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "dictionaries": ["en_US", "softwareTerms", "polish"]
+    },
+    {
+      "filename": "**/*.yml",
+      "dictionaries": ["en_US", "softwareTerms", "polish"]
+    },
+    {
+      "filename": "**/*.yaml",
+      "dictionaries": ["en_US", "softwareTerms", "polish"]
+    },
+    {
+      "filename": "**/*.sh",
+      "dictionaries": ["en_US", "softwareTerms", "polish"]
+    }
+  ]
+}

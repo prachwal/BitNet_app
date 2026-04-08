@@ -4,6 +4,7 @@ services:
       context: .
     image: "${BITNET_IMAGE_NAME:-bitnet-cpu:latest}"
     container_name: "${BITNET_CONTAINER_NAME:-bitnet-cpu}"
+    mem_limit: 16g
     ports:
       - "${BITNET_PORT:-8080}:8080"
       - "${BITNET_HEALTH_PORT:-8081}:8081"
@@ -13,7 +14,7 @@ services:
       BITNET_MODEL_DIR: /models/bitnet
       BITNET_PROMPT: "${BITNET_PROMPT:-You are a helpful assistant.}"
       BITNET_CTX_SIZE: "${BITNET_CTX_SIZE:-2048}"
-      BITNET_THREADS: "${BITNET_THREADS:-4}"
+      BITNET_THREADS: "${BITNET_THREADS:-6}"
       BITNET_N_PREDICT: "${BITNET_N_PREDICT:-512}"
       BITNET_TEMPERATURE: "${BITNET_TEMPERATURE:-0.8}"
       BITNET_HOST: 0.0.0.0
