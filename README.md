@@ -28,6 +28,12 @@ git fetch upstream
 git rebase upstream/main
 ```
 
+Możesz też użyć helpera:
+
+```bash
+bash scripts/sync-upstream.sh
+```
+
 ## Funkcje
 
 - CPU-only runtime
@@ -121,6 +127,7 @@ Po wypchnięciu repo do GitHub wystarczy włączyć Actions i nadać repo uprawn
 - [Dockerfile](/home/prachwal/src/python/BitNet_app/Dockerfile)
 - [docker-entrypoint.sh](/home/prachwal/src/python/BitNet_app/docker-entrypoint.sh)
 - [docker-compose.yml](/home/prachwal/src/python/BitNet_app/docker-compose.yml)
+- [scripts/sync-upstream.sh](/home/prachwal/src/python/BitNet_app/scripts/sync-upstream.sh)
 - [.env.example](/home/prachwal/src/python/BitNet_app/.env.example)
 - [.github/workflows/docker-publish.yml](/home/prachwal/src/python/BitNet_app/.github/workflows/docker-publish.yml)
 - [CHANGELOG.md](/home/prachwal/src/python/BitNet_app/CHANGELOG.md)
